@@ -9,7 +9,6 @@ function ToDo() {
 
 ToDo.prototype.assignId = function () {
   this.currentId += 1;
-  console.log(this.currentId);
   return this.currentId;
 };
 
@@ -19,7 +18,7 @@ ToDo.prototype.addItem = function (task) {
   return this.currentId;
 };
 
-ToDo.prototype.completeItem = function (task) {
+ToDo.prototype.completeItem = function (id) {
   if (this.tasks[id] === undefined) {
     return false;
   }
@@ -28,7 +27,11 @@ ToDo.prototype.completeItem = function (task) {
 };
 
 ToDo.prototype.displayList = function () {
-  this.tasks.forEach(function (keyValue) {
-    console.log(keyValue);
-  });
+
+  for (const taskObject in this.tasks) {
+    console.log(`ID: ${this.tasks[taskObject].id} `);
+    console.log(`Description: ${this.tasks[taskObject].description}`);
+  }
+
+  //write into an ordered list stored inside a div
 };

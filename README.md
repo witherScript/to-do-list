@@ -20,12 +20,32 @@ toDoList.addItem(task);
 Expected output: 1
 
 Completed Item
+Test: The task should be removed from the to do list and return true to indicate it has been deleted.
+Code: 
+```javascript
+const task = new Task("let the dogs out");
+const myList =  new ToDo();
+const taskObjId = myList.addItem(task);
+console.log(myList.completeItem(taskObjId));
+```
+Output: true
 
+Display
+Test: should display all the tasks. -> console.log
+Code: 
+```javascript
+const task2 = new Task("let the cats out");
+const mySecondList =  new ToDo();
+mySecondList.addItem(task2);
+mySecondList.displayList();
+```
+Output: 
+  For all tasks in mySecondList....
+  `${task.id} ${task.description}`
 
-Describe: ToDo 
-// 1. Accessors: how do we know whats in our tasks list
-// 2. Mutators: how do we change that -> addTask, completeTask
-Test: It holds the task in the
+  Task 1: "Take the dogs out"
+  Task 2: "Take the trash out"
+
 
 
 
