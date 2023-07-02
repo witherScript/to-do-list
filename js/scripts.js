@@ -3,12 +3,12 @@ function Task(description) {
 };
 
 function ToDo() {
-  this.tasks = {};
+  this.tasks = {}; //[]
   this.currentId = 0;
 };
 
 ToDo.prototype.assignId = function () {
-  this.currentId += 1;
+  this.currentId += 1; //currentIndex
   return this.currentId;
 };
 
@@ -28,10 +28,19 @@ ToDo.prototype.completeItem = function (id) {
 
 ToDo.prototype.displayList = function () {
 
-  for (const taskObject in this.tasks) {
-    console.log(`ID: ${this.tasks[taskObject].id} `);
-    console.log(`Description: ${this.tasks[taskObject].description}`);
-  }
+  const listDivTitle = document.createElement('h2');
+  listDivTitle.innerText = "To-Do List:\n";
 
-  //write into an ordered list stored inside a div
-};
+  const listDiv = document.createElement('div');
+  listDiv.prepend(listDivTitle);
+
+  const list = document.createElement('ol');
+  let listElement;
+  for (const taskObject in this.tasks) {
+    listElement = document.createElement('li');
+    listElement.append(`${this.tasks[taskObject].description}`);
+    list.append(listElement);
+  }
+  listDiv.appendChild(list);
+  document.body.append(listDiv);
+}
